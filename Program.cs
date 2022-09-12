@@ -64,7 +64,7 @@ namespace GETITHOSTIP
             var output = (from dpt in dpmt
                          join emp in employees on dpt.ID equals emp.DEPTid into jioned
                          from empdata in jioned.DefaultIfEmpty()
-                         select new { DeptName = dpt.Name, EmpName = empdata?.EmpName ?? string.Empty }).ToArray();
+                         select new { DeptName = dpt.Name, EmpName = empdata?.EmpName ?? string.Empty }).ToArray();           
         }
     }
     public  class EMP
