@@ -42,7 +42,6 @@ namespace GETITHOSTIP
                 Console.WriteLine($"Host by Address {info.HostName}");
                 Console.ReadKey();
             }
-
         }
         private static void LINQJIONT()
         {
