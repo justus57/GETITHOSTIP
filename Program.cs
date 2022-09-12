@@ -14,6 +14,7 @@ namespace GETITHOSTIP
         [Obsolete]
         static void Main(string[] args)
         {
+            LINQJIONT();
             ReadcvsFile();
             GetIPAddress("gmail.com");
         }
@@ -43,6 +44,38 @@ namespace GETITHOSTIP
             }
 
         }
+        private static void LINQJIONT()
+        {
+            var employees = new List<EMP>
+            {
+                new EMP{ DEPTid = 123,EmpName="Chris"},
+                new EMP{ DEPTid = 124,EmpName="Mark"},
+                new EMP{ DEPTid = 125,EmpName="Steve"},
+                 new EMP{ DEPTid = 126,EmpName="Stacy"},
+                 new EMP{ DEPTid = 127,EmpName="Jason"}
+            };
+            var dpmt = new List<DPT>
+            {
+                new DPT{ ID =101, Name="DEV"},
+                new DPT{ ID =102, Name="QA"},
+                new DPT{ ID=103, Name ="Support"}               
+            };
+
+            var output = (from dpt in dpmt
+                         join emp in employees on dpt.ID equals emp.DEPTid into jioned
+                         from empdata in jioned.DefaultIfEmpty()
+                         select new { DeptName = dpt.Name, EmpName = empdata?.EmpName ?? string.Empty }).ToArray();
+        }
+    }
+    public  class EMP
+    {
+        public string EmpName { get; set; }
+        public int DEPTid { get; set; }
+    }
+    public class DPT
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
     }
     public class Employees
     {
