@@ -29,6 +29,8 @@ namespace GETITHOSTIP
             {
                 Console.WriteLine("Enter a Number to convert to currency");               
                 string number = Console.ReadLine();
+                long v = Convert.ToInt64(number);
+                number = v.ToString();
                 number = Convert.ToDouble(number).ToString();
 
                 if (number.Contains("-"))
@@ -40,13 +42,15 @@ namespace GETITHOSTIP
                 {
                     number = number.Replace(",", "");
                 }
-                if (number == "0")
+                switch (number)
                 {
-                    Console.WriteLine("The number in currency fomat is \nZero Only");
-                }
-                else
-                {
-                    Console.WriteLine("The number in currency fomat is \n{0}", isNegative + ConvertToWords(number));
+                    case "0":
+                        Console.WriteLine("The number in currency fomat is \nZero Only");
+                        break;
+                    default:
+                        Console.WriteLine("The number in currency fomat is \n{0}", isNegative + ConvertToWords(number));
+
+                        break;
                 }
                 Console.ReadKey();
             }
@@ -155,15 +159,17 @@ namespace GETITHOSTIP
         }
         private static String ConvertToWords(String numb)
         {
-            String val = "", wholeNo = numb, points = "", andStr = "", pointStr = "";
+            String val = string.Empty, wholeNo = numb, points = string.Empty, andStr = string.Empty, pointStr = string.Empty, point=string.Empty;
             String endStr = "Only";
             try
             {
+                point = int.Parse(numb, System.Globalization.NumberStyles.HexNumber).ToString();
                 int decimalPlace = numb.IndexOf(".");
                 if (decimalPlace > 0)
                 {
                     wholeNo = numb.Substring(0, decimalPlace);
                     points = numb.Substring(decimalPlace + 1);
+                    
                     if (Convert.ToInt32(points) > 0)
                     {
                         andStr = "and";// just to separate whole numbers from points/cents    
