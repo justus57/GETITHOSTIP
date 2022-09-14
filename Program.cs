@@ -17,6 +17,17 @@ namespace GETITHOSTIP
             LINQJIONT();
             ReadcvsFile();
             GetIPAddress("gmail.com");
+            Abstractclass();
+        }
+
+        private static void Abstractclass()
+        {
+            AbsChild absChild = new AbsChild();
+            absChild.Add(10, 5);
+            absChild.Sub(10, 5);
+            absChild.Mul(10, 5);
+            absChild.Div(10, 2);
+            Console.ReadKey();
         }
 
         private static void ReadcvsFile()
@@ -27,7 +38,7 @@ namespace GETITHOSTIP
             {
                 var records = csv.GetRecords<Employees>().ToArray();
             }
-            Console.ReadKey();
+           
         }
 
         [Obsolete]
@@ -40,7 +51,7 @@ namespace GETITHOSTIP
                 Console.WriteLine($"Adress:{address}");
                 var info = Dns.GetHostByAddress(address);
                 Console.WriteLine($"Host by Address {info.HostName}");
-                Console.ReadKey();
+               
             }
         }
         private static void LINQJIONT()
@@ -64,6 +75,30 @@ namespace GETITHOSTIP
                          join emp in employees on dpt.ID equals emp.DEPTid into jioned
                          from empdata in jioned.DefaultIfEmpty()
                          select new { DeptName = dpt.Name, EmpName = empdata?.EmpName ?? string.Empty }).ToArray();           
+        }
+    }
+    public abstract class AbsParent
+    {
+        public void Add(int x, int y)
+        {
+            Console.WriteLine($"Addition of {x} and {y} is : {x + y}");
+        }
+        public void Sub(int x, int y)
+        {
+            Console.WriteLine($"Subtraction of {x} and {y} is : {x - y}");
+        }
+        public abstract void Mul(int x, int y);
+        public abstract void Div(int x, int y);
+    }
+    public class AbsChild : AbsParent
+    {
+        public override void Mul(int x, int y)
+        {
+            Console.WriteLine($"Multiplication of {x} and {y} is : {x * y}");
+        }
+        public override void Div(int x, int y)
+        {
+            Console.WriteLine($"Division of {x} and {y} is : {x / y}");
         }
     }
     public  class EMP
