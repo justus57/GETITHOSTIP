@@ -20,8 +20,47 @@ namespace GETITHOSTIP
             GetIPAddress("gmail.com");
             //Abstractclass();
             writinginWord();
+            Duplication();
         }
 
+        private static void Duplication()
+        {
+            string value1 = RemoveDuplicateChars("Csharpstar");
+            string value2 = RemoveDuplicateChars("Google");
+            string value3 = RemoveDuplicateChars("Yahoo");
+            string value4 = RemoveDuplicateChars("CNN");
+            string value5 = RemoveDuplicateChars("Line1\nLine2\nLine3");
+
+            Console.WriteLine(value1);
+            Console.WriteLine(value2);
+            Console.WriteLine(value3);
+            Console.WriteLine(value4);
+
+            Console.ReadKey();
+        }
+
+        static string RemoveDuplicateChars(string key)
+        {
+            // --- Removes duplicate chars using string concats. ---
+            // Store encountered letters in this string.
+            string table = "";
+
+            // Store the result in this string.
+            string result = "";
+
+            // Loop over each character.
+            foreach (char value in key)
+            {
+                // See if character is in the table.
+                if (table.IndexOf(value) == -1)
+                {
+                    // Append to the table and the result.
+                    table += value;
+                    result += value;
+                }
+            }
+            return result;
+        }
         private static void writinginWord()
         {
             string isNegative = "";
@@ -52,14 +91,13 @@ namespace GETITHOSTIP
 
                         break;
                 }
-                Console.ReadKey();
+               
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-
         private static String ConvertWholeNumber(String Number)
         {
             string word = "";
@@ -316,7 +354,6 @@ namespace GETITHOSTIP
             absChild.Div(10, 2);
             Console.ReadKey();
         }
-
         private static void ReadcvsFile()
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + @"\DATA.CSV";
@@ -327,7 +364,6 @@ namespace GETITHOSTIP
             }
            
         }
-
         [Obsolete]
         private static void GetIPAddress(string IpAddress)
         {
