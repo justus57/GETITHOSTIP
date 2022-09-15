@@ -68,6 +68,7 @@ namespace GETITHOSTIP
                 bool beginsZero = false;//tests for 0XX    
                 bool isDone = false;//test if already translated    
                 double dblAmt = (Convert.ToDouble(Number));
+
                 //if ((dblAmt > 0) && number.StartsWith("0"))    
                 if (dblAmt > 0)
                 {//test for zero or digit zero in a nuemric    
