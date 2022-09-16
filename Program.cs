@@ -35,10 +35,8 @@ namespace GETITHOSTIP
             Console.WriteLine(value2);
             Console.WriteLine(value3);
             Console.WriteLine(value4);
-
             Console.ReadKey();
         }
-
         static string RemoveDuplicateChars(string key)
         {
             // --- Removes duplicate chars using string concats. ---
@@ -66,7 +64,8 @@ namespace GETITHOSTIP
             string isNegative = "";
             try
             {
-                Console.WriteLine("Enter a Number to convert to currency");               
+                Console.WriteLine("Enter a Number to convert to currency");  
+                
                 string number = Console.ReadLine();
                 long v = Convert.ToInt64(number);
                 number = v.ToString();
